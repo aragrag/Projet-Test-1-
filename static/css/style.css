@@ -50,7 +50,9 @@ color: #000000;
 justify-content: center;
 align-items: center
 }
-
+.badge.date-naissance span {
+  width: 220px!important;
+}
 .progress {
 height: 10px;
 border-radius: 10px
@@ -71,7 +73,7 @@ color: #a5aec0
 .title a {
   color: #FFC107;
   margin-bottom: 5px;
-  /* display: block; */
+  font-weight: 700;
 }
 
 /* Ciblez la liste <ul> */
@@ -128,4 +130,8 @@ color: black;
 }
 h2.mb-2.h5 {
   min-height: 69px;
+}
+
+.ms-2.c-details.title p {
+    font-size: 16px;
 }

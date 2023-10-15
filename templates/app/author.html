@@ -1,0 +1,63 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Profil de {{ author.first_name }} {{ author.last_name }}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    </head>
+        
+        <body>
+            <div class="container mt-5 mb-3">
+                <div class="row"> 
+                    <div class="col-md-12 ">
+                        <h1 class="mb-5"><strong>Profil de {{ author.first_name }} {{ author.last_name }}</strong></h1>
+
+                        <div class="card p-3 mb-5">
+                            <div class="d-flex justify-content-between mb-0">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="ms-2 c-details title">
+                                        <h2 class="mb-2 h2"><strong>{{ author.first_name }} {{ author.last_name }}</strong></h2>
+                                        <p><strong>Nationalité de l'auteur :</strong> {{ author.nationality }}</p>
+                                        <p><strong>Biographie de l'auteur :</strong> {{ author.biography }}</p>
+                                        <p><strong>Site Web de l'auteur :</strong> <a href="{{ author.website }}">{{ author.website }}</a></p>
+                                    </div>
+                                </div>
+                                <div class="badge date-naissance"><span>Date de naissance : {{ author.birth_date }}</span></div>
+                            </div>
+                        </div>
+
+                        <h2 class="mb-3 h5"><strong>Livres de {{ author.first_name }} {{ author.last_name }} :</strong></h2>
+                        <ul>
+                            {% for book in author.books %}
+                                <li>{{ book.title }} - {{ book.publication_date }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div> 
+
+                </div>
+                <div class="row">                
+                    {% for book in books %}
+                    <div class="col-md-4">
+                        <div class="card p-3 mb-2">
+                            <div class="d-flex justify-content-between mb-4">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="ms-2 c-details title">
+                                        <h2 class="mb-2 h5"><strong>{{ book.title }}</strong></h2>
+                                        <p><span>ISBN : {{ book.ISBN }}</span></p>
+                                        <p><strong>Date de publication : </strong> <br> {{ book.publication_date }}</p>
+                                        <p><strong>Auteur : </strong><a href="/author/{{ book.author.id }}/"> {{ book.author.first_name }} {{ book.author.last_name }}</a></p>
+                                    </div>
+                                </div>
+                                <div class="badge"><span>Rating : {{ book.rating }}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>               
+        </body>
+</html>
